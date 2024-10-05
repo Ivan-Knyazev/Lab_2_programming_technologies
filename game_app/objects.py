@@ -2,8 +2,8 @@ from game_app.interfaces import Attacker, Moveable
 from game_app.abs_objects import Unit, Building
 
 # Set damage variables
-archer_damage = 15.5
-fort_damage = 5.5
+archer_damage = 25.5
+fort_damage = 15.5
 
 
 class Archer(Unit, Attacker, Moveable):

@@ -17,7 +17,10 @@ class Unit(GameObject, ABC):
         return self.hp
 
     def receiveDamage(self, damage: float) -> None:
-        self.hp -= damage
+        if damage <= self.hp:
+            self.hp -= damage
+        else:
+            raise ValueError("Damage of more hp!")
 
 
 class Building(GameObject, ABC):
