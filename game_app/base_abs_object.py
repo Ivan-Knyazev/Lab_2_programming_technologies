@@ -2,9 +2,13 @@ from abc import ABC, abstractmethod
 
 
 class GameObject(ABC):
+    
+    id_counter: int = 0 # static field for count ID numbrs of objects
+    
     @abstractmethod
-    def __init__(self, id: int, name: str, X: float, Y: float) -> None:
-        self.id: int = id
+    def __init__(self, name: str, X: float = 0, Y: float = 0) -> None:
+        GameObject.id_counter += 1
+        self.id: int = GameObject.id_counter
         self.name: str = name
         self.X: float = X
         self.Y: float = Y

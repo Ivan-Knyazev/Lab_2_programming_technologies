@@ -2,14 +2,14 @@ from game_app.interfaces import Attacker, Moveable
 from game_app.abs_objects import Unit, Building
 
 # Set damage variables
-archer_damage = 25.5
-fort_damage = 15.5
+archer_damage = 24.0
+fort_damage = 19.0
 
 
 class Archer(Unit, Attacker, Moveable):
-    def __init__(self, id: int, name: str, X: float, Y: float,
+    def __init__(self, name: str, X: float, Y: float,
                  is_alive: bool = True, hp: float = 100) -> None:
-        super().__init__(id, name, X, Y, is_alive, hp)
+        super().__init__(name, X, Y, is_alive, hp)
 
     def attack(self, unit: Unit) -> None:
         unit.receiveDamage(damage=archer_damage)
@@ -26,9 +26,9 @@ class Archer(Unit, Attacker, Moveable):
 
 
 class Fort(Building, Attacker):
-    def __init__(self, id: int, name: str, X: float, Y: float,
+    def __init__(self, name: str, X: float, Y: float,
                  is_build: bool = False) -> None:
-        super().__init__(id, name, X, Y, is_build)
+        super().__init__(name, X, Y, is_build)
 
     def attack(self, unit: Unit) -> None:
         unit.receiveDamage(damage=fort_damage)
@@ -40,9 +40,9 @@ class Fort(Building, Attacker):
 
 
 class MobileHouse(Building, Moveable):
-    def __init__(self, id: int, name: str, X: float, Y: float,
+    def __init__(self, name: str, X: float, Y: float,
                  is_build: bool = False) -> None:
-        super().__init__(id, name, X, Y, is_build)
+        super().__init__(name, X, Y, is_build)
 
     def move(self, diffX: int = 3, diffY: int = 3) -> None:
         self.X += diffX
